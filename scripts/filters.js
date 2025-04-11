@@ -1,4 +1,4 @@
-export function populateDropdown(id, values) {
+export function populateDropdown(id, values, activeTags, addTag) {
     const container = document.getElementById(id);
     const ul = document.createElement("ul");
   
@@ -19,7 +19,7 @@ export function populateDropdown(id, values) {
     container.appendChild(ul);
   }
   
-  function generateFilters(recipeList) {
+  export function generateFilters(recipeList, activeTags, addTag) {
     const ingredientsSet = new Set();
     const appliancesSet = new Set();
     const ustensilsSet = new Set();
@@ -30,7 +30,8 @@ export function populateDropdown(id, values) {
       recipe.ustensils.forEach((u) => ustensilsSet.add(u.toLowerCase()));
     });
   
-    populateDropdown("dropdown-ingredients", ingredientsSet);
-    populateDropdown("dropdown-appareils", appliancesSet);
-    populateDropdown("dropdown-ustensiles", ustensilsSet);
+    populateDropdown("dropdown-ingredients", ingredientsSet, activeTags, addTag);
+    populateDropdown("dropdown-appareils", appliancesSet, activeTags, addTag);
+    populateDropdown("dropdown-ustensiles", ustensilsSet, activeTags, addTag);
   }
+  
