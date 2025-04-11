@@ -8,10 +8,13 @@ body {
   }
   
   header {
-    background-color: #ffd15b;
+    background-image: url("../assets/background/hero-background.webp"); 
+    background-size: cover;
+    background-position: center;
+    color: white;
     padding: 2rem;
     text-align: center;
-  }
+  }  
   
   .logo {
     width: 60px;
