@@ -1,15 +1,11 @@
 import { recipes } from "../data/recipes.js";
 
-// Ciblage du conteneur des recettes
-const container = document.getElementById("recipes-container");
-
-// Fonction de création d'une carte recette
 function createRecipeCard(recipe) {
   const article = document.createElement("article");
   article.classList.add("recipe-card");
 
   article.innerHTML = `
-    <div class="recipe-image"></div>
+    <img src="assets/images/${recipe.image}" alt="${recipe.name}" class="recipe-image" />
     <div class="recipe-info">
       <div class="recipe-header">
         <h2>${recipe.name}</h2>
@@ -31,7 +27,8 @@ function createRecipeCard(recipe) {
   return article;
 }
 
-// Affichage de toutes les recettes
+const container = document.getElementById("recipes-container");
+
 recipes.forEach((recipe) => {
   const card = createRecipeCard(recipe);
   container.appendChild(card);
