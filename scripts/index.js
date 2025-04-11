@@ -27,9 +27,42 @@ function createRecipeCard(recipe) {
   return article;
 }
 
-const container = document.getElementById("recipes-container");
+function populateDropdown(id, values) {
+  const container = document.getElementById(id);
+  const ul = document.createElement("ul");
 
+  values.forEach((val) => {
+    const li = document.createElement("li");
+    li.textContent = val.charAt(0).toUpperCase() + val.slice(1);
+    ul.appendChild(li);
+  });
+
+  container.innerHTML = "";
+  container.appendChild(ul);
+}
+
+function generateFilters(recipes) {
+  const ingredientsSet = new Set();
+  const appliancesSet = new Set();
+  const ustensilsSet = new Set();
+
+  recipes.forEach((recipe) => {
+    recipe.ingredients.forEach((item) => ingredientsSet.add(item.ingredient.toLowerCase()));
+    appliancesSet.add(recipe.appliance.toLowerCase());
+    recipe.ustensils.forEach((u) => ustensilsSet.add(u.toLowerCase()));
+  });
+
+  populateDropdown("dropdown-ingredients", ingredientsSet);
+  populateDropdown("dropdown-appareils", appliancesSet);
+  populateDropdown("dropdown-ustensiles", ustensilsSet);
+}
+
+// Injection des recettes
+const container = document.getElementById("recipes-container");
 recipes.forEach((recipe) => {
   const card = createRecipeCard(recipe);
   container.appendChild(card);
 });
+
+// Génération des filtres
+generateFilters(recipes);

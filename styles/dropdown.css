@@ -1,0 +1,19 @@
+.filters {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .dropdown ul {
+    list-style: none;
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
