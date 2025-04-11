@@ -2,6 +2,8 @@ import { recipes } from "../data/recipes.js";
 
 const container = document.getElementById("recipes-container");
 const searchInput = document.getElementById("main-search");
+const tagsContainer = document.getElementById("tags-container");
+let activeTags = [];
 
 function createRecipeCard(recipe) {
   const article = document.createElement("article");
@@ -80,7 +82,7 @@ function generateFilters(recipeList) {
   populateDropdown("dropdown-ustensiles", ustensilsSet);
 }
 
-function searchRecipes(query) {
+function searchRecipes(query, tags) {
   const lowerQuery = query.toLowerCase();
 
   return recipes.filter((recipe) => {
@@ -94,33 +96,26 @@ function searchRecipes(query) {
       ust.toLowerCase().includes(lowerQuery)
     );
 
-    return inName || inDescription || inIngredients || inAppliance || inUstensils;
+    const matchesSearch =
+      lowerQuery.length < 3 || inName || inDescription || inIngredients || inAppliance || inUstensils;
+
+    const matchesTags = tags.every((tag) => {
+      const tagLower = tag.toLowerCase();
+      const inIngredientsTag = recipe.ingredients.some((ing) =>
+        ing.ingredient.toLowerCase() === tagLower
+      );
+      const inApplianceTag = recipe.appliance.toLowerCase() === tagLower;
+      const inUstensilsTag = recipe.ustensils.some(
+        (ust) => ust.toLowerCase() === tagLower
+      );
+      return inIngredientsTag || inApplianceTag || inUstensilsTag;
+    });
+
+    return matchesSearch && matchesTags;
   });
 }
 
-// Événement sur le champ de recherche
-searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.trim();
-  if (value.length < 3) {
-    displayRecipes(recipes);
-    generateFilters(recipes);
-    return;
-  }
-
-  const results = searchRecipes(value);
-  displayRecipes(results);
-  generateFilters(results);
-});
-
-// Chargement initial
-displayRecipes(recipes);
-generateFilters(recipes);
-
-const tagsContainer = document.getElementById("tags-container");
-let activeTags = [];
-
 function addTag(tagValue, category) {
-  // éviter les doublons
   if (activeTags.includes(tagValue)) return;
 
   activeTags.push(tagValue);
@@ -135,10 +130,26 @@ function addTag(tagValue, category) {
   removeBtn.addEventListener("click", () => {
     activeTags = activeTags.filter((t) => t !== tagValue);
     tag.remove();
-    // faire le filtrage reel ici
+    const results = searchRecipes(searchInput.value.trim(), activeTags);
+    displayRecipes(results);
+    generateFilters(results);
   });
 
   tag.appendChild(removeBtn);
   tagsContainer.appendChild(tag);
+
+  const results = searchRecipes(searchInput.value.trim(), activeTags);
+  displayRecipes(results);
+  generateFilters(results);
 }
 
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value.trim();
+  const results = searchRecipes(value, activeTags);
+  displayRecipes(results);
+  generateFilters(results);
+});
+
+// Chargement initial
+displayRecipes(recipes);
+generateFilters(recipes);
