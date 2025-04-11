@@ -14,6 +14,13 @@
     padding: 0.4rem 0.8rem;
     border-radius: 0.5rem;
     font-weight: 500;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease;
+  }
+  
+  .tag:hover {
+    background-color: #ffcf3f;
   }
   
   .tag button {
@@ -22,5 +29,7 @@
     margin-left: 0.5rem;
     cursor: pointer;
     font-size: 1rem;
+    color: #333;
+    line-height: 1;
   }
   
