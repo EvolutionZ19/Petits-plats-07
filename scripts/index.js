@@ -33,9 +33,14 @@ function createRecipeCard(recipe) {
 function displayRecipes(recipeList) {
   container.innerHTML = "";
   if (recipeList.length === 0) {
-    container.innerHTML = "<p>Aucune recette ne correspond à votre recherche...</p>";
+    container.innerHTML = `
+      <div class="no-results">
+        <p>Aucune recette ne correspond à votre recherche.<br>
+        Essayez avec un autre mot-clé ou affinez vos filtres.</p>
+      </div>
+    `;
     return;
-  }
+  }  
 
   recipeList.forEach((recipe) => {
     const card = createRecipeCard(recipe);
