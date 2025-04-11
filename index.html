@@ -9,19 +9,24 @@
   <link rel="stylesheet" href="styles/dropdown.css" />
   <link rel="stylesheet" href="styles/no_result.css" />
   <link rel="stylesheet" href="styles/tags.css" />
+  <link rel="stylesheet" href="styles/global.css" />
 </head>
 <body>
-  <header>
+  <header class="hero">
     <img src="assets/logo/logo.svg" alt="Les Petits Plats" class="logo" />
-    <h1>Les Petits Plats</h1>
-    <div class="search-container">
-      <input
-        type="text"
-        id="main-search"
-        placeholder="Rechercher une recette, un ingrédient, ..."
-        aria-label="Recherche principale"
-      />
-      <button id="search-button" aria-label="Rechercher">🔍</button>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        CHERCHEZ PARMI PLUS DE 1500 RECETTES<br />DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+      </h1>
+      <div class="search-container">
+        <input
+          type="text"
+          id="main-search"
+          placeholder="Rechercher une recette, un ingrédient, ..."
+          aria-label="Recherche principale"
+        />
+        <button id="search-button" aria-label="Rechercher">🔍</button>
+      </div>
     </div>
     <div id="tags-container" class="tags-container"></div>
   </header>

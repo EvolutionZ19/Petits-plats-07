@@ -1,0 +1,33 @@
+/* === HERO / HEADER === */
+
+.hero {
+    position: relative;
+    background: url('../assets/background/hero-background.webp') center/cover no-repeat;
+    color: white;
+    padding: 60px 0 100px;
+    text-align: center;
+  }
+  
+  .hero .logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 200px;
+  }
+  
+  .hero__content {
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .hero__title {
+    font-size: 44px;
+    font-weight: bold;
+    line-height: 1.4;
+    color: white;
+    text-transform: uppercase;
+    color: #FFD15B;
+  }
+  
+
+  
