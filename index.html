@@ -28,9 +28,20 @@
 
   <main>
     <section class="filters">
-      <div class="dropdown" id="dropdown-ingredients">Ingrédients</div>
-      <div class="dropdown" id="dropdown-appareils">Appareils</div>
-      <div class="dropdown" id="dropdown-ustensiles">Ustensiles</div>
+      <div class="dropdown" id="dropdown-ingredients-container">
+        <button class="dropdown-toggle" data-target="dropdown-ingredients">Ingrédients</button>
+        <div class="dropdown-content" id="dropdown-ingredients"></div>
+      </div>
+
+      <div class="dropdown" id="dropdown-appareils-container">
+        <button class="dropdown-toggle" data-target="dropdown-appareils">Appareils</button>
+        <div class="dropdown-content" id="dropdown-appareils"></div>
+      </div>
+
+      <div class="dropdown" id="dropdown-ustensiles-container">
+        <button class="dropdown-toggle" data-target="dropdown-ustensiles">Ustensiles</button>
+        <div class="dropdown-content" id="dropdown-ustensiles"></div>
+      </div>
     </section>
 
     <section id="recipes-container">

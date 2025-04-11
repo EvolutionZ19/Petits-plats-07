@@ -153,3 +153,17 @@ searchInput.addEventListener("input", (e) => {
 // Chargement initial
 displayRecipes(recipes);
 generateFilters(recipes);
+
+function initDropdownToggles() {
+    const toggles = document.querySelectorAll(".dropdown-toggle");
+  
+    toggles.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const container = btn.closest(".dropdown");
+        container.classList.toggle("open");
+      });
+    });
+  }
+  
+  initDropdownToggles();
+  
