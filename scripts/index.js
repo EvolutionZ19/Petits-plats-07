@@ -159,11 +159,24 @@ function initDropdownToggles() {
   
     toggles.forEach((btn) => {
       btn.addEventListener("click", () => {
-        const container = btn.closest(".dropdown");
-        container.classList.toggle("open");
+        const targetDropdown = btn.closest(".dropdown");
+  
+        // Si le dropdown est déjà ouvert, on le referme
+        const isOpen = targetDropdown.classList.contains("open");
+  
+        // Fermer tous les autres dropdowns
+        document.querySelectorAll(".dropdown").forEach((dropdown) => {
+          dropdown.classList.remove("open");
+        });
+  
+        // Rouvrir le dropdown cliqué uniquement s’il n’était pas déjà ouvert
+        if (!isOpen) {
+          targetDropdown.classList.add("open");
+        }
       });
     });
   }
   
   initDropdownToggles();
+  
   
