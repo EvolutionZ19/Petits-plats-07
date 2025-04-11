@@ -13,10 +13,13 @@
 </head>
 <body>
   <header class="hero">
-    <img src="assets/logo/logo.svg" alt="Les Petits Plats" class="logo" />
-    <div class="hero__content">
-      <h1 class="hero__title">
-        CHERCHEZ PARMI PLUS DE 1500 RECETTES<br />DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+    <div class="hero-top">
+      <img src="assets/logo/logo.svg" alt="Les Petits Plats" class="logo" />
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        CHERCHEZ PARMI PLUS DE <span class="highlight">1500 RECETTES</span><br />
+        DU QUOTIDIEN, <span class="highlight">SIMPLES</span> ET <span class="highlight">DÉLICIEUSES</span>
       </h1>
       <div class="search-container">
         <input
@@ -46,6 +49,10 @@
       <div class="dropdown" id="dropdown-ustensiles-container">
         <button class="dropdown-toggle" data-target="dropdown-ustensiles">Ustensiles</button>
         <div class="dropdown-content" id="dropdown-ustensiles"></div>
+      </div>
+
+      <div class="recipes-counter">
+        <span id="recipe-count">1500 recettes</span>
       </div>
     </section>
 
