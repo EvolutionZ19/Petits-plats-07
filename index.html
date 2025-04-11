@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Les Petits Plats</title>
-  <link rel="stylesheet" href="styles/reset.css" />
-  <link rel="stylesheet" href="styles/variables.css" />
-  <link rel="stylesheet" href="styles/layout.css" />
-</head>
 <body>
-  <div id="app"></div>
-  <script type="module" src="scripts/index.js"></script>
+  <header>
+    <img src="assets/logo/logo.svg" alt="Les Petits Plats" class="logo" />
+    <h1>Les Petits Plats</h1>
+    <div class="search-container">
+      <input
+        type="text"
+        id="main-search"
+        placeholder="Rechercher une recette, un ingrédient, ..."
+        aria-label="Recherche principale"
+      />
+      <button id="search-button" aria-label="Rechercher">🔍</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="filters">
+      <div class="dropdown" id="dropdown-ingredients">Ingrédients</div>
+      <div class="dropdown" id="dropdown-appareils">Appareils</div>
+      <div class="dropdown" id="dropdown-ustensiles">Ustensiles</div>
+    </section>
+
+    <section id="recipes-container">
+      <!-- Cartes de recettes générées dynamiquement ici -->
+    </section>
+  </main>
 </body>
-</html>
