@@ -179,4 +179,15 @@ function initDropdownToggles() {
   
   initDropdownToggles();
   
+  document.addEventListener("click", (e) => {
+    const isToggle = e.target.closest(".dropdown-toggle");
+    const isInsideDropdown = e.target.closest(".dropdown");
+  
+    // Si on clique ni sur un toggle ni dans un dropdown, on ferme tout
+    if (!isToggle && !isInsideDropdown) {
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.classList.remove("open");
+      });
+    }
+  });
   
