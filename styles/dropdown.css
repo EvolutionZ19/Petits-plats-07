@@ -86,3 +86,7 @@
     background-color: #ffd15b;
   }
   
+  .dropdown-content li.selected {
+    background-color: #ffe082;
+    font-weight: bold;
+  }  

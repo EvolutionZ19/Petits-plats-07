@@ -58,6 +58,11 @@ function populateDropdown(id, values) {
     const li = document.createElement("li");
     const label = val.charAt(0).toUpperCase() + val.slice(1);
     li.textContent = label;
+
+    if (activeTags.includes(label)) {
+      li.classList.add("selected");
+    }
+
     li.addEventListener("click", () => addTag(label, id));
     ul.appendChild(li);
   });
