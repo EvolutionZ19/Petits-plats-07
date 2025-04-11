@@ -54,7 +54,9 @@ function populateDropdown(id, values) {
 
   values.forEach((val) => {
     const li = document.createElement("li");
-    li.textContent = val.charAt(0).toUpperCase() + val.slice(1);
+    const label = val.charAt(0).toUpperCase() + val.slice(1);
+    li.textContent = label;
+    li.addEventListener("click", () => addTag(label, id));
     ul.appendChild(li);
   });
 
@@ -113,3 +115,30 @@ searchInput.addEventListener("input", (e) => {
 // Chargement initial
 displayRecipes(recipes);
 generateFilters(recipes);
+
+const tagsContainer = document.getElementById("tags-container");
+let activeTags = [];
+
+function addTag(tagValue, category) {
+  // éviter les doublons
+  if (activeTags.includes(tagValue)) return;
+
+  activeTags.push(tagValue);
+
+  const tag = document.createElement("span");
+  tag.classList.add("tag", category);
+  tag.textContent = tagValue;
+
+  const removeBtn = document.createElement("button");
+  removeBtn.innerHTML = "❌";
+  removeBtn.setAttribute("aria-label", "Supprimer le tag");
+  removeBtn.addEventListener("click", () => {
+    activeTags = activeTags.filter((t) => t !== tagValue);
+    tag.remove();
+    // faire le filtrage reel ici
+  });
+
+  tag.appendChild(removeBtn);
+  tagsContainer.appendChild(tag);
+}
+
