@@ -1,28 +1,31 @@
 export function createRecipeCard(recipe) {
-    const article = document.createElement("article");
-    article.classList.add("recipe-card");
-  
-    article.innerHTML = `
+  const article = document.createElement("article");
+  article.classList.add("recipe-card");
+
+  article.innerHTML = `
+    <div class="recipe-image-container">
       <img src="assets/images/${recipe.image}" alt="${recipe.name}" class="recipe-image" />
-      <div class="recipe-info">
-        <div class="recipe-header">
-          <h2>${recipe.name}</h2>
-          <span class="time">${recipe.time} min</span>
-        </div>
-        <div class="recipe-ingredients">
-          ${recipe.ingredients
-            .map((ing) => {
-              const unit = ing.unit ? ` ${ing.unit}` : "";
-              const qty = ing.quantity ? `: ${ing.quantity}${unit}` : "";
-              return `<p><strong>${ing.ingredient}</strong>${qty}</p>`;
-            })
-            .join("")}
-        </div>
-        <p class="recipe-description">${recipe.description}</p>
+      <span class="time recipe-time">${recipe.time} min</span>
+    </div>
+    <div class="recipe-info">
+      <h2 class="recipe-title">${recipe.name}</h2>
+      <h3 class="recipe-section-title">Recette</h3>
+      <p class="recipe-description">${recipe.description}</p>
+      <h3 class="recipe-section-title">Ingrédients</h3>
+      <div class="recipe-ingredients">
+        ${recipe.ingredients
+          .map((ing) => {
+            const qty = ing.quantity ? ing.quantity : "";
+            const unit = ing.unit ? ` ${ing.unit}` : "";
+            const details = qty || unit ? `<span>${qty}${unit}</span>` : "";
+            return `<p><strong>${ing.ingredient}</strong>${details}</p>`;
+          })
+          .join("")}
       </div>
-    `;
-    return article;
-  }
+    </div>
+  `;
+  return article;
+}
   
   export function displayRecipes(container, recipeList) {
     container.innerHTML = "";
