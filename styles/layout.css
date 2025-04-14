@@ -53,3 +53,29 @@ body {
     cursor: pointer;
   }
   
+  .recipes-counter {
+    margin-left: auto;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  
+  #recipe-count {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: auto;
+    padding-bottom: 0.5rem;
+  }
+  .filters {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    align-items: flex-end;
+    max-width: 1240px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  
+  
