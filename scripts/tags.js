@@ -13,7 +13,8 @@ export function createTag(tagValue, category, activeTags, tagsContainer, searchI
     tag.remove();
 
     // Met à jour les recettes affichées
-    handleSearchAndTags();
+    const updateEvent = new Event("tagUpdate");
+    document.dispatchEvent(updateEvent);
   });
 
   tag.appendChild(removeBtn);

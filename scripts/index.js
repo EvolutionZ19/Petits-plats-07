@@ -75,3 +75,9 @@ displayRecipes(container, recipes);
 generateFilters(recipes, activeTags, addTag);
 initDropdownToggles();
 handleSearchAndTags(); 
+
+// Écouteur d'événement pour la mise à jour des tags
+document.addEventListener("tagUpdate",() => {
+  handleSearchAndTags();
+}
+);
