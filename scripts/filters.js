@@ -11,7 +11,7 @@ export function populateDropdown(id, values, activeTags, addTag) {
       li.classList.add("selected");
     }
 
-    li.addEventListener("click", () => addTag(label, id));
+    li.addEventListener("click", () => addTag(val, id));
     ul.appendChild(li);
   });
 
