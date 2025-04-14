@@ -74,3 +74,4 @@ function initDropdownToggles() {
 displayRecipes(container, recipes);
 generateFilters(recipes, activeTags, addTag);
 initDropdownToggles();
+handleSearchAndTags(); 
