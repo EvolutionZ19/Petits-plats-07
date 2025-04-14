@@ -9,13 +9,22 @@ const searchInput = document.getElementById("main-search");
 const tagsContainer = document.getElementById("tags-container");
 let activeTags = [];
 
+// Met à jour le compteur de recettes affichées
+function updateRecipeCount(list) {
+  const countElement = document.getElementById("recipe-count");
+  countElement.textContent = `${list.length} recette${list.length > 1 ? "s" : ""}`;
+}
+
+// Recherche principale + tags combinés
 function handleSearchAndTags() {
   const query = searchInput.value.trim();
   const results = searchRecipes(recipes, query, activeTags);
   displayRecipes(container, results);
+  updateRecipeCount(results); // compteur mis à jour ici
   generateFilters(results, activeTags, addTag);
 }
 
+// Ajout d’un tag sélectionné
 function addTag(tagValue, category) {
   if (activeTags.includes(tagValue)) return;
 
@@ -35,8 +44,10 @@ function addTag(tagValue, category) {
   handleSearchAndTags();
 }
 
+// Barre de recherche (saisie)
 searchInput.addEventListener("input", handleSearchAndTags);
 
+// Dropdowns cliquables
 function initDropdownToggles() {
   const toggles = document.querySelectorAll(".dropdown-toggle");
 
@@ -45,19 +56,16 @@ function initDropdownToggles() {
       const targetDropdown = btn.closest(".dropdown");
       const isOpen = targetDropdown.classList.contains("open");
 
-      // Ferme tous les autres
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("open");
       });
 
-      // Rouvre uniquement si ce n’était pas déjà ouvert
       if (!isOpen) {
         targetDropdown.classList.add("open");
       }
     });
   });
 
-  // Fermer au clic en dehors
   document.addEventListener("click", (e) => {
     const isToggle = e.target.closest(".dropdown-toggle");
     const isInsideDropdown = e.target.closest(".dropdown");
@@ -70,14 +78,13 @@ function initDropdownToggles() {
   });
 }
 
+// Quand un tag est supprimé 
+document.addEventListener("tagUpdate", () => {
+  handleSearchAndTags();
+});
+
 // Initialisation
 displayRecipes(container, recipes);
+updateRecipeCount(recipes); // compteur initial
 generateFilters(recipes, activeTags, addTag);
 initDropdownToggles();
-handleSearchAndTags(); 
-
-// Écouteur d'événement pour la mise à jour des tags
-document.addEventListener("tagUpdate",() => {
-  handleSearchAndTags();
-}
-);
